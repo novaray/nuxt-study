@@ -4,8 +4,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   /*
    ** programmatically start the loader so we force the page to take x2seconds to load
    */
@@ -17,5 +19,5 @@ export default {
       setTimeout(() => this.$nuxt.$loading.finish(), 2000);
     });
   },
-};
+})
 </script>

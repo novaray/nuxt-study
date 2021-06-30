@@ -15,12 +15,7 @@ export default {
     ]
   },
 
-  loading: {
-    color: 'DodgerBlue',
-    height: '10px',
-    continuous: true,
-    duration: 3000
-  },
+  loading: '~/components/LoadingBar.vue',
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -33,12 +28,18 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/element'
+    ]
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    '@nuxtjs/composition-api/module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -48,7 +49,13 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': 'http://localhost:8080/',
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
